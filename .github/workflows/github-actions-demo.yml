@@ -25,5 +25,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Install firebase
+      run: npm install firebase
+
     - name: Build
       run: sudo npm run build
