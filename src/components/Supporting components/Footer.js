@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import classes from "../../css/main_page.module.css";
 import { getRemoteConfig, getValue, fetchAndActivate } from "firebase/remote-config";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 function Footer() {
     const firebaseConfig = {
@@ -18,7 +17,6 @@ function Footer() {
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
 
 
     const remoteConfig = getRemoteConfig(app);
@@ -29,7 +27,6 @@ function Footer() {
     useEffect(() => {
         const fetchRemoteConfig = async () => {
             await fetchAndActivate(remoteConfig);
-
             
             const addressValue = getValue(remoteConfig, "actualAddress");
             const telephoneNumberValue = getValue(remoteConfig, "actualTelephoneNumber");
